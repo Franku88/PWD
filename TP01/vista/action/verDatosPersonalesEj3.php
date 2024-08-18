@@ -2,7 +2,8 @@
     include "../../control/Persona.php";
     include "../../util/funciones.php";
 
-    $persona1 = new Persona(data_submitted());
+    $datos = data_submitted();
+    $persona1 = new Persona($datos["nombre"], $datos["apellido"], $datos["edad"], $datos["direccion"]);
     $presentacion = $persona1->presentarse();
 ?>
 

@@ -90,5 +90,50 @@ $(function() {
         }
     });
 
+    $("#miFormulario3").on("submit", function(event) {
+        // Previene el envío del formulario si hay errores
+        var esValido = true;
+        // Limpia mensajes de error anteriores
+        $(".error").text("");
+
+        // Validación del nombre
+        var msjVacio = "Valor necesario.";
+        var msjRango = "El valor debe ser igual o mayor a 0";
+        var nombre = $("#nombre").val().trim();
+        var apellido = $("#apellido").val().trim();
+        var edad = $("#edad").val().trim();
+        var direccion = $("#direccion").val().trim();
+        
+        if (nombre == "") {
+            $("#errorNombre").text(msjVacio);
+            esValido = false;
+        }
+
+        if (apellido == "") {
+            $("#errorApellido").text(msjVacio);
+            esValido = false;
+        }
+
+        if (edad == "") {
+            $("#errorEdad").text(msjVacio);
+            esValido = false;
+        } else {
+            if (edad < 0) {
+                $("#errorEdad").text(msjRango);
+                esValido = false;
+            }
+        }
+
+        if (direccion == "") {
+            $("#errorDireccion").text(msjVacio);
+            esValido = false;
+        }
+
+        // Si el formulario no es válido, evita el envío
+        if (!esValido) {
+            event.preventDefault();
+        }
+    });
+
 }
 );
