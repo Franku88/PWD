@@ -1,16 +1,24 @@
 <?php
-    include "../../control/Persona.php";
-    include "../../util/funciones.php";
+    include "../../Control/Persona.php";
+    include "../../Utils/funciones.php";
 
     $datos = data_submitted();
-    $persona1 = new Persona($datos["nombre"], $datos["apellido"], $datos["edad"], $datos["direccion"], $datos["estudios"], $datos["sexo"], $datos["deportes"]);
+
+    //Verifica si se marcó algun deporte
+    if (isset($datos["deportes"])) { //Verifica que este definido el array
+        $deportes = $datos["deportes"];
+    } else {
+        $deportes = array();
+    }
+    
+    $persona1 = new Persona($datos["nombre"], $datos["apellido"], $datos["edad"], $datos["direccion"], $datos["estudios"], $datos["sexo"], $deportes);
     $presentacion = $persona1->presentarseEESD();
 ?>
 
 <html>
 
     <head>
-        <link href="../../../lib/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <title>Ejercicio 6: Resultado</title>
     </head>
 

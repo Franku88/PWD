@@ -4,12 +4,12 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <title> Ejercicio 8 </title>
+        <title> Ejercicio 8 Validado </title>
     </head>
     
     <body>
         <div>
-            <h1 class="position-relative border p-4"> Ejercicio 8 </h1>
+            <h1 class="position-relative border p-4"> Ejercicio 8 Validado </h1>
         </div>
         <div class="modal position-relative d-block p-5 py-md-5">
             <div class="rounded-4 shadow border p-3">
@@ -50,21 +50,25 @@
                         <h1 class="fw-bold mb-0 fs-4"> Cinem@s </h1>
                     </div>
                     <div class="modal-body p-5 pt-0">
-                        <form action="Action/verPrecio.php" method="POST">
+                        <form id="miFormulario8" action="Action/verPrecio.php" method="POST">
                             <div class="form-floating mb-3">
-                                <input class="form-control rounded-3" type="number" name="edad" id="edad" min="0" placeholder="" required>    
+                                <input class="form-control rounded-3" type="number" name="edad" id="edad" placeholder="">
                                 <label for="edad">Edad</label>
+                                <span class="text-danger error" id="errorEdad"></span>
                             </div>
-                            <div class="d-flex mb-2">
+                            <div class="form-floating mb-3">
                                 <p>¿Estudia?: </p>        
-                                <div class="form-check">
-                                    <input type="radio" id="si" name="estudia" value="1" required>
-                                    <label for="si">Si</label><br>
+                                <div class="d-flex mb-2">
+                                    <div class="form-check">
+                                        <input type="radio" id="si" name="estudia" value="1">
+                                        <label for="si">Si</label><br>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" id="no" name="estudia" value="0">
+                                        <label for="no">No</label><br>
+                                    </div>
                                 </div>
-                                <div class="form-check">
-                                    <input type="radio" id="no" name="estudia" value="0" required>
-                                    <label for="no">No</label><br>
-                                </div>
+                                <span class="text-danger error" id="errorEstudia"></span>
                             </div>
                             <div class="d-flex">
                                 <div class="form-floating w-50 me-1">
@@ -90,6 +94,8 @@
             </div>
             -->
         </div>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="Assets/validacion.js"></script>
     </body>
     
     </html>

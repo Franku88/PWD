@@ -101,6 +101,7 @@ class Persona {
             $mensaje = $mensaje."ninguno.";
         }        
         return $mensaje;
+        return $mensaje;
     }
 
 }
