@@ -1,7 +1,7 @@
 <?php
 include_once '../../../configuracion.php';
 include_once ROOT_PATH.'/Controller/ABMAuto.php';
-include_once ROOT_PATH.'/View/Assets/funcionesHtml.php';
+include_once ROOT_PATH.'/View/Assets/Helper.php';
 
 $arrAutos = (new ABMAuto())->buscar();
 
@@ -13,16 +13,16 @@ if (empty($arrAutos)) {
     foreach($arrAutos as $auto) {
         $arreglo[] = $auto->toArrayNyA(); //Solo obtiene nombre y apellido del duenio
     }
-    $resultado = arrayToHtmlTable($arreglo);
+    $resultado = Helper::arrayToHtmlTable($arreglo);
 }
 ?>
 
 <?php include STRUCTURE_PATH.'/Head.php';?>
-    <main>
-        <div class="mx-4 my-3">
-            <h1> Autos Registrados </h1> 
-            <div class="rounded-4 overflow-x-auto p-3"><?php echo($resultado);?></div>
-        </div>
-    </main>
+    
+    <div class="mx-4 my-3">
+        <h1> Autos Registrados </h1> 
+        <div class="rounded-4 overflow-x-auto p-3"><?php echo($resultado);?></div>
+    </div>
+    
 <?php include STRUCTURE_PATH.'/Foot.php';?>
         

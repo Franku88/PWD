@@ -253,5 +253,17 @@ Class Auto {
             ]
         );
     }
+
+    /**
+     * Debugging y testing
+     */
+    public function toArraySolo() {
+        return ([
+            'Patente' => ($this->getPatente()),
+            'Marca' => ($this->getMarca()),
+            'Modelo' => ($this->getModelo()),            
+            ]
+        );
+    }
 }
 ?>

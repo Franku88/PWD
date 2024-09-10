@@ -2,7 +2,7 @@
 include_once '../../../../configuracion.php';
 include_once ROOT_PATH.'/Util/funciones.php';
 include_once ROOT_PATH.'/Controller/ABMAuto.php';
-include_once ROOT_PATH.'/View/Assets/funcionesHtml.php';
+include_once ROOT_PATH.'/View/Assets/Helper.php';
 
 $data = data_submitted();
 
@@ -11,7 +11,7 @@ if (!empty($data)) {
     if (!empty($arrAutos)) {
         $arreglo = [$arrAutos[0]->toArray()]; //Paso objeto a array para usar arrayToTable
         $resultado = "<h1> Resultado </h1> 
-            <div class='rounded-4 overflow-x-auto p-3'>".arrayToHtmlTable($arreglo)."</div>";
+            <div class='rounded-4 overflow-x-auto p-3'>".Helper::arrayToHtmlTable($arreglo)."</div>";
     } else {
         $resultado = "<div class='alert alert-warning border-steam-inactivo'>
             <h5> Auto con patente '".strtoupper($data['patente'])."' no encontrado.</h5>
