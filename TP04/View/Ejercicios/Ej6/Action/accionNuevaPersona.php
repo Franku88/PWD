@@ -23,6 +23,9 @@ if (!empty($data)) {
         if((new ABMPersona())->alta($nuevaPersona)) {
             $resultado = "<div class='alert alert-success border-steam-inactivo'>
             <h5> Persona registrada con exito.</h5>
+            </div>
+            <div class='mb-1'>
+                    <a href='../../Ej5/listaPersonas.php' class='btn btn-secondary btn-steam2'> Ver personas </a>
             </div>";
         } else {
             $resultado = "<div class='alert alert-warning border-steam-inactivo'>
