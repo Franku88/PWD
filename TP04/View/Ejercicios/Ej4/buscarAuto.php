@@ -12,7 +12,7 @@ include_once '../../../configuracion.php';
         <div class="modal-body p-5 pt-0">
             <form id="formEj4" action="Action/accionBuscarAuto.php" method="POST">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control rounded-3" name="patente" id="patente" placeholder="">    
+                    <input type="text" class="form-control rounded-3" name="patente" id="patente" minlength="7" maxlength="9" placeholder="">    
                     <label for="patente"> Patente </label>
                     <div class="invalid-feedback">
                         Formatos aceptados: 'ABC 123' o 'AB 123 CD'

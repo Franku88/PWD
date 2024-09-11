@@ -31,7 +31,7 @@ if (empty($arrPersonas)) {
             <div class="modal-body p-5 pt-0">
                 <form id="formEj5" action="Action/autosPersona.php" method="POST">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-3" name="nrodni" id="nrodni" placeholder="">
+                        <input type="text" class="form-control rounded-3" name="nrodni" id="nrodni" minlength="8" maxlength="8" placeholder="">
                         <label for="nrodni"> DNI </label>
                         <div class="invalid-feedback">
                         DNI de 8 digitos, sin puntos.
