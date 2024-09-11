@@ -21,7 +21,6 @@ if (!empty($data)) {
             </div>";
     }
 }
-
 ?>
 
 <?php include_once STRUCTURE_PATH.'/Head.php';?>

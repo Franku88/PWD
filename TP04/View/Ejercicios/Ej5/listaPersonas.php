@@ -46,4 +46,3 @@ if (empty($arrPersonas)) {
     </div>
 
 <?php include_once STRUCTURE_PATH.'/Foot.php';?>
-        

@@ -25,4 +25,3 @@ if (empty($arrAutos)) {
     </div>
     
 <?php include STRUCTURE_PATH.'/Foot.php';?>
-        
