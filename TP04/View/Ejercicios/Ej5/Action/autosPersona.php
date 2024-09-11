@@ -10,14 +10,19 @@ $data = data_submitted();
 if (!empty($data)) {
     $arrPersona = (new ABMPersona())->buscar(['NroDni'=>($data['nrodni'])]);
     if (!empty($arrPersona)) {
-        $arreglo = [$arrPersona[0]->toArray()]; //Paso objeto a array para usar arrayToTable
+        //$arreglo1 referencia arreglo con Persona en forma de arreglo
+        $arreglo1 = [$arrPersona[0]->toArray()]; //Paso objeto a array para usar arrayToTable
         $resultado = "<h1> Persona </h1> 
-            <div class='rounded-4 overflow-x-auto p-3'>".Helper::arrayToHtmlTable($arreglo)."</div>";
-        $arrAutos = (new ABMAuto())->buscar(['DniDuenio'=>($data['nrodni'])]);
+            <div class='rounded-4 overflow-x-auto p-3'>".Helper::arrayToHtmlTable($arreglo1)."</div>";
+        $arrAutos = (new ABMAuto())->buscar(['Duenio'=>($arrPersona[0])]);
         if (!empty($arrAutos)) {
-            $arreglo = [$arrAutos[0]->toArraySolo()]; //Paso objeto a array para usar arrayToTable, solo datos del auto
+            //$arreglo2 referencia arreglo con Autos en forma de arreglo
+            $arreglo2 = [];
+            foreach ($arrAutos as $auto) {
+                $arreglo2[] = $auto->toArraySolo(); //Paso objeto a array para usar arrayToTable, solo datos del auto
+            }
             $resultado .= "<h1> Autos registrados </h1> 
-            <div class='rounded-4 overflow-x-auto p-3'>".Helper::arrayToHtmlTable($arreglo)."</div>";
+            <div class='rounded-4 overflow-x-auto p-3'>".Helper::arrayToHtmlTable($arreglo2)."</div>";
         } else {
             $resultado .= "<div class='alert alert-warning border-steam-inactivo'>
             <h5> No posee vehículos registrados.</h5>
