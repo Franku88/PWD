@@ -25,7 +25,7 @@ if (!empty($data)) {
         }
     } else {
         $resultado = "<div class='alert alert-warning border-steam-inactivo'>
-            <h5> Persona con DNI '".strtoupper($data['nrodni'])."' no encontrada.</h5>
+            <h5> Persona con DNI '".($data['nrodni'])."' no encontrada.</h5>
             </div>";
     }
 }

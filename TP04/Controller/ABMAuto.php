@@ -117,6 +117,9 @@ class ABMAuto {
             if  (isset($param['Duenio'])) {
                 $where .= " AND DniDuenio ='".($param['Duenio'])->getNroDni()."'";
             }
+            if  (isset($param['DniDuenio'])) {
+                $where .= " AND DniDuenio ='".$param['DniDuenio']."'";
+            }
         }
         $arreglo = (new Auto())->listar($where);
         return $arreglo;

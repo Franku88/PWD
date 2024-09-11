@@ -25,7 +25,7 @@ function data_submitted() {
 	if (!empty($data)) {
 		foreach ($data as $indice => $valor) {
 			if ($valor == "") { //Reemplaza cada cadena vacia a null
-				$data[$indice] = null;
+				$data[$indice] = "null";
 			}
 		}
 	}
