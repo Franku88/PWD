@@ -5,6 +5,9 @@ include_once ROOT_PATH.'/Controller/ABMAuto.php';
 include_once ROOT_PATH.'/View/Assets/Helper.php';
 
 $data = data_submitted();
+$resultado = "<div class='alert alert-warning border-steam-inactivo'>
+            <h5> Datos no recibidos.</h5>
+            </div>";
 
 if (!empty($data)) {
     $arrAutos = (new ABMAuto())->buscar(['Patente'=>($data['patente'])]);
