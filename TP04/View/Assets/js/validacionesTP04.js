@@ -139,3 +139,63 @@ $(document).ready(function() {
         $(this).removeClass('is-invalid');
     });
 });
+
+/**
+ * Formulario de nuevoAuto en EJ7
+ */
+$(document).ready(function() {
+    $('#formEj7').on('submit', function(event) {
+        let isValid = true;
+
+        var patente = $('#patente').val().trim().toUpperCase();
+        var marca = $('#marca').val().trim();
+        var modelo = $('#modelo').val().trim();
+        var dniduenio = $('#dniduenio').val().trim();
+
+        const formatPatente = /^[A-Z]{3}\s\d{3}$|^[A-Z]{2}\s\d{3}\s[A-Z]{2}$/; // Formato ABC 123, AB 123 CD
+        const formatNombre = /^[A-Za-zÀ-ÿ\s'-]{2,50}$/; // Cadenas de 2 a 50 caracteres
+        const formatModelo = /^\d{2}$|^\d{4}$/; //Numero de 2 o 4 digitos
+        const formatDni = /^\d{8}$/; // Numero de 8 digitos, sin puntos
+
+        if (formatPatente.test(patente)) {
+            $('#patente').removeClass('is-invalid');
+        } else {
+            $('#patente').addClass('is-invalid');
+            isValid = false;
+        }
+
+        if (formatNombre.test(marca)) {
+            $('#marca').removeClass('is-invalid');
+        } else {
+            $('#marca').addClass('is-invalid');
+            isValid = false;
+        }
+
+        if (formatModelo.test(modelo)) {
+            if (modelo <= ((new Date()).getFullYear() + 2)) {
+                $('#modelo').removeClass('is-invalid');
+            } else {
+                $('#modelo').addClass('is-invalid');
+                isValid = false;
+            }
+        } else {
+            $('#modelo').addClass('is-invalid');
+            isValid = false;
+        }
+
+        if (formatDni.test(dniduenio)) {
+            $('#dniduenio').removeClass('is-invalid');
+        } else {
+            $('#dniduenio').addClass('is-invalid');
+            isValid = false;
+        }
+
+        if (!isValid) {
+            event.preventDefault();    
+        }
+    });
+
+    $('#patente, #marca, #modelo, #dniduenio').on('input change', function() { //Si cambia el valor
+        $(this).removeClass('is-invalid');
+    });
+});
