@@ -69,7 +69,6 @@ include_once '../../../configuracion.php';
                         Domicilio inválido.
                         </div>
                     </div>
-                    
 
                     <div class="form-floating mb-2 text-center">
                         <button class="w-50 mb-2 btn rounded-3 btn-primary btn-steam4" type="submit">Enviar</button>
