@@ -21,3 +21,26 @@ $(document).ready(function() {
         $(this).removeClass('is-invalid');
     });
 });
+
+/**
+ * Formulario de listaPersonas en EJ5
+ */
+$(document).ready(function() {
+    $('#formEj5').on('submit', function(event) {
+        let isValid = true;
+        var nrodni = $('#nrodni').val().trim().toUpperCase();
+        const format = /^\d{8}$/; // Numero de 8 digitos, sin puntos
+        if (format.test(nrodni)) {
+            $('#nrodni').removeClass('is-invalid');
+        } else {
+            $('#nrodni').addClass('is-invalid');
+            isValid = false;
+        }
+        if (!isValid) {
+            event.preventDefault();
+        }
+    });
+    $('#nrodni').on('input', function() { //Si cambia el valor
+        $(this).removeClass('is-invalid');
+    });
+});

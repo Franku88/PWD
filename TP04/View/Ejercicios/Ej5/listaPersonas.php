@@ -34,7 +34,7 @@ if (empty($arrPersonas)) {
                         <input type="text" class="form-control rounded-3" name="nrodni" id="nrodni" placeholder="">
                         <label for="nrodni"> DNI </label>
                         <div class="invalid-feedback">
-                            Numero de DNI sin puntos
+                        DNI de 8 digitos, sin puntos.
                         </div>
                     </div>
                     <div class="form-floating mb-2">
