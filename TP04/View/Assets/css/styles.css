@@ -1,4 +1,26 @@
 /* #394273, #4D5944, #3E4736, #BFAD50, #8C8C8C*/
+label { /*Necesario pues se visualizan dentro del input (sin bootstrap se muestran fuera)*/
+    color: black;
+}
+
+*::-webkit-scrollbar {
+    width: 0.6em;
+    height: 0.6em;
+}
+  
+*::-webkit-scrollbar-thumb {
+    background-color: #3e4637;
+    border-radius: 8px; /*Borde redondeado del scroll*/
+}
+  
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #808080;
+}
+
+*::-webkit-scrollbar-corner {
+    background-color: #31382a;
+}
+
 .contenedor-inactivo-steam {
     border-top: 2px #737770 solid;
     border-left: 2px #737770 solid;
