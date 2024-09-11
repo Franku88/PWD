@@ -2,7 +2,6 @@
 include_once '../../../../configuracion.php';
 include_once ROOT_PATH.'/Util/funciones.php';
 include_once ROOT_PATH.'/Controller/ABMPersona.php';
-include_once ROOT_PATH.'/View/Assets/Helper.php';
 
 $data = data_submitted();
 
