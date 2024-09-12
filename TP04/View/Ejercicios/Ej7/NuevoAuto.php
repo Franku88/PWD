@@ -4,6 +4,16 @@ include_once '../../../configuracion.php';
 
 <?php include_once STRUCTURE_PATH.'/Head.php';?>
 
+<div class="alert alert-secondary rounded-4 m-5 border-steam-activo">
+    <p class="fs-5"> <b>Ejercicio 7</b> - Crear una  página  “NuevoAuto.php”  que  contenga  un  formulario  en el  que  se permita  cargar
+    todos   los   datos   de   un   auto   (incluso   su   dueño).   Estos   datos   serán   enviados   a   una   página
+    “accionNuevoAuto.php” que cargue un nuevo registro en la tabla auto de la base de datos. Se debe chequear
+    antes que la persona dueña del auto ya se encuentre cargada en la base de datos, de no ser así mostrar un
+    link a la página que permite carga una nueva persona. Se debe mostrar un mensaje que indique si se pudo o
+    no cargar los datos Utilizar css y validaciones javaScript cuando crea conveniente. Recordar usar la capa de
+    control antes generada, no se puede acceder directamente a las clases del ORM.</p>
+</div>
+
 <div class="modal-dialog m-auto">
     <div class="modal-content rounded-4 shadow contenedor-inactivo-steam w-auto">
         <div class="modal-header p-5 pb-4 border-bottom-0">
