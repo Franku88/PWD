@@ -17,7 +17,13 @@ if (empty($arrPersonas)) {
 ?>
 
 <?php include_once STRUCTURE_PATH.'/Head.php';?>
-    
+    <div class="alert alert-secondary rounded-4 m-5 border-steam-activo">
+            <p class="fs-5"> <b>Ejercicio 5</b> - Crear   una   página   "listaPersonas.php"   que   muestre   un   listado   con   las   personas   que   se
+            encuentran cargadas y un link a otra página “autosPersona.php” que recibe un dni de una persona y muestra
+            los datos de la persona y un listado de los autos que tiene asociados. Recordar usar la capa de control antes
+            generada, no se puede acceder directamente a las clases del ORM.</p>
+    </div>
+
     <div class="mx-4 my-3">
         <h1> Personas Registradas </h1> 
         <div class="rounded-4 overflow-x-auto p-3"><?php echo($resultado);?></div>
