@@ -36,7 +36,7 @@ if (!empty($data)) {
         } else {
             $resultado = "<div class='alert alert-warning border-steam-inactivo'>
                 <h5> Persona con DNI '".($data['dniduenio'])."' no se encuentra registrada.
-                Registre la persona e intentelo nuevamente.</h5>
+                Registrela e intente nuevamente.</h5>
                 </div>
                 <div class='mb-1'>
                     <a href='../../Ej6/NuevaPersona.php' class='btn btn-secondary btn-steam2'> Registrar Persona </a>
