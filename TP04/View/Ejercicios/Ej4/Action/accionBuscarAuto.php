@@ -10,14 +10,14 @@ $resultado = "<div class='alert alert-warning border-steam-inactivo'>
             </div>";
 
 if (!empty($data)) {
-    $arrAutos = (new ABMAuto())->buscar(['Patente'=> (strtoupper($data['patente']))]);
+    $arrAutos = (new ABMAuto())->buscar(['Patente'=> (trim(strtoupper($data['patente'])))]);
     if (!empty($arrAutos)) {
         $arreglo = [$arrAutos[0]->toArray()]; //Paso objeto a array para usar arrayToTable
         $resultado = "<h1> Resultado </h1> 
             <div class='rounded-4 overflow-x-auto p-3'>".Helper::arrayToHtmlTable($arreglo)."</div>";
     } else {
         $resultado = "<div class='alert alert-warning border-steam-inactivo'>
-            <h5> Auto con patente '".strtoupper($data['patente'])."' no encontrado.</h5>
+            <h5> Auto con patente '".trim(strtoupper($data['patente']))."' no encontrado.</h5>
             </div>";
     }
 }

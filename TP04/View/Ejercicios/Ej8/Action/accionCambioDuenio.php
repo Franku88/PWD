@@ -11,11 +11,11 @@ $resultado = "<div class='alert alert-warning border-steam-inactivo'>
             </div>";
 
 if (!empty($data)) {
-    $arrAuto = (new ABMAuto())->buscar(['Patente'=>(strtoupper($data['patente']))]);
+    $arrAuto = (new ABMAuto())->buscar(['Patente'=>(trim(strtoupper($data['patente'])))]);
     if (!empty($arrAuto)) {
-        $arrPersona = (new ABMPersona())->buscar(['NroDni'=>($data['dniduenio'])]);
+        $arrPersona = (new ABMPersona())->buscar(['NroDni'=>(trim($data['dniduenio']))]);
         if (!empty($arrPersona)) {
-            if (($arrAuto[0]->getDuenio())->getNroDni() != ($data['dniduenio'])) { //Verifica que no sea duenio actualmente
+            if (($arrAuto[0]->getDuenio())->getNroDni() != trim($data['dniduenio'])) { //Verifica que no sea duenio actualmente
                 $autoModificado = [
                     'Patente'=> ($arrAuto[0]->getPatente()),
                     'Marca'=> ($arrAuto[0]->getMarca()),
@@ -31,12 +31,12 @@ if (!empty($data)) {
                     </div>";
                 } else {
                     $resultado = "<div class='alert alert-warning border-steam-inactivo'>
-                    <h5> Alta no realizada, algún dato no válido en la BD.</h5>
+                    <h5> Cambio no realizado, algún dato no válido en la BD.</h5>
                     </div>";
                 }
             } else {
                 $resultado = "<div class='alert alert-warning border-steam-inactivo'>
-                    <h5> Persona con DNI '".($data['dniduenio'])."' ya es dueña del auto con pantente '".strtoupper($data['patente'])."'.</h5>
+                    <h5> Persona con DNI '".trim($data['dniduenio'])."' ya es dueña del auto con pantente '".trim(strtoupper($data['patente']))."'.</h5>
                     </div>
                     <div class='mb-1'>
                         <a href='../../Ej3/verAutos.php' class='btn btn-secondary btn-steam2'> Ver autos </a>
@@ -44,12 +44,12 @@ if (!empty($data)) {
             }
         } else {
             $resultado = "<div class='alert alert-warning border-steam-inactivo'>
-                <h5> Persona con DNI '".($data['dniduenio'])."' no se encuentra registrada.</h5>
+                <h5> Persona con DNI '".trim($data['dniduenio'])."' no se encuentra registrada.</h5>
                 </div>";
         }
     } else {
         $resultado = "<div class='alert alert-warning border-steam-inactivo'>
-                <h5> Auto con pantente '".strtoupper($data['patente'])."' no se encuentra registrado.</h5>
+                <h5> Auto con pantente '".trim(strtoupper($data['patente']))."' no se encuentra registrado.</h5>
                 </div>";
     }
 }

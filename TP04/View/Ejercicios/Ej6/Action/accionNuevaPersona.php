@@ -13,12 +13,12 @@ if (!empty($data)) {
     $arrPersona = (new ABMPersona())->buscar(['NroDni'=>($data['nrodni'])]);
     if (empty($arrPersona)) {
         $nuevaPersona = [
-            'NroDni'=> ($data['nrodni']),
-            'Apellido'=>($data['apellido']),
-            'Nombre'=>($data['nombre']),
-            'fechaNac'=>($data['fechanac']),
-            'Telefono'=>($data['codarea'].'-'.$data['numlocal']),
-            'Domicilio'=>($data['domicilio'])
+            'NroDni'=> (trim($data['nrodni'])),
+            'Apellido'=> (trim($data['apellido'])),
+            'Nombre'=> (trim($data['nombre'])),
+            'fechaNac'=> (trim($data['fechanac'])),
+            'Telefono'=> (trim($data['codarea'].'-'.$data['numlocal'])),
+            'Domicilio'=> (trim($data['domicilio']))
         ];
         if((new ABMPersona())->alta($nuevaPersona)) {
             $resultado = "<div class='alert alert-success border-steam-inactivo'>
@@ -34,7 +34,7 @@ if (!empty($data)) {
         }
     } else {
         $resultado = "<div class='alert alert-warning border-steam-inactivo'>
-            <h5> Persona con DNI '".($data['nrodni'])."' ya se encuentra registrada.</h5>
+            <h5> Persona con DNI '".trim($data['nrodni'])."' ya se encuentra registrada.</h5>
             </div>";
     }
 }

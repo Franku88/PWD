@@ -16,9 +16,9 @@ if (!empty($data)) {
         $arrPersona = (new ABMPersona())->buscar(['NroDni'=>($data['dniduenio'])]);
         if (!empty($arrPersona)) {
             $nuevoAuto = [
-                'Patente'=> (strtoupper($data['patente'])),
-                'Marca'=> ($data['marca']),
-                'Modelo'=> ($data['modelo']),
+                'Patente'=> (trim(strtoupper($data['patente']))),
+                'Marca'=> (trim($data['marca'])),
+                'Modelo'=> (trim($data['modelo'])),
                 'Duenio'=> ($arrPersona[0])
             ];
             if ((new ABMAuto())->alta($nuevoAuto)) {
@@ -35,7 +35,7 @@ if (!empty($data)) {
             }
         } else {
             $resultado = "<div class='alert alert-warning border-steam-inactivo'>
-                <h5> Persona con DNI '".($data['dniduenio'])."' no se encuentra registrada.
+                <h5> Persona con DNI '".trim($data['dniduenio'])."' no se encuentra registrada.
                 Registrela e intente nuevamente.</h5>
                 </div>
                 <div class='mb-1'>
@@ -44,7 +44,7 @@ if (!empty($data)) {
         }
     } else {
         $resultado = "<div class='alert alert-warning border-steam-inactivo'>
-                <h5> Auto con pantente '".($data['patente'])."' ya se encuentra registrado.</h5>
+                <h5> Auto con pantente '".trim($data['patente'])."' ya se encuentra registrado.</h5>
                 </div>";
     }
 }

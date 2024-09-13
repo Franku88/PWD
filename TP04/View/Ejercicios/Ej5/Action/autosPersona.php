@@ -11,7 +11,7 @@ $resultado = "<div class='alert alert-warning border-steam-inactivo'>
             </div>";
 
 if (!empty($data)) {
-    $arrPersona = (new ABMPersona())->buscar(['NroDni'=>($data['nrodni'])]);
+    $arrPersona = (new ABMPersona())->buscar(['NroDni'=>(trim($data['nrodni']))]);
     if (!empty($arrPersona)) {
         //$arreglo1 referencia arreglo con Persona en forma de arreglo
         $arreglo1 = [$arrPersona[0]->toArray()]; //Paso objeto a array para usar arrayToTable
@@ -33,7 +33,7 @@ if (!empty($data)) {
         }
     } else {
         $resultado = "<div class='alert alert-warning border-steam-inactivo'>
-            <h5> Persona con DNI '".($data['nrodni'])."' no registrada.</h5>
+            <h5> Persona con DNI '".trim($data['nrodni'])."' no registrada.</h5>
             </div>";
     }
 }
