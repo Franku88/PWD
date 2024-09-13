@@ -11,7 +11,7 @@ $resultado = "<div class='alert alert-warning border-steam-inactivo'>
             </div>";
 
 if (!empty($data)) {
-    $arrAuto = (new ABMAuto())->buscar(['Patente'=>($data['patente'])]);
+    $arrAuto = (new ABMAuto())->buscar(['Patente'=>(strtoupper($data['patente']))]);
     if (empty($arrAuto)) {
         $arrPersona = (new ABMPersona())->buscar(['NroDni'=>($data['dniduenio'])]);
         if (!empty($arrPersona)) {
