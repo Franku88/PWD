@@ -1,3 +1,13 @@
+/*Regex usadas en validaciones*/
+const regexDni = /^\d{8}$/; // Numero de 8 digitos, sin puntos
+const regexNombre = /^[A-Za-zÀ-ÿ\s'-]{2,50}$/; // Cadenas de 2 a 50 caracteres
+const regexFechaNac = /^\d{4}-\d{2}-\d{2}$/; // Fecha en formato AAAA-MM-DD
+const regexTelefono = /^(?:\d{2}-\d{8}|\d{3}-\d{7}|\d{4}-\d{6})$/; // Numeros de 10 digitos, separados por '-' al 2, 3 o 4 digito
+const regexDomicilio = /^[\d\s\w\.,-]{5,200}$/;
+
+const regexPatente = /^[A-Z]{3}\s\d{3}$|^[A-Z]{2}\s\d{3}\s[A-Z]{2}$/; // Formato ABC 123, AB 123 CD
+const regexModelo = /^\d{2}$|^\d{4}$/; //Numero de 2 o 4 digitos
+
 /**
  * Formulario de buscarAuto en EJ4
  */
@@ -5,14 +15,14 @@ $(document).ready(function() {
     $('#formEj4').on('submit', function(event) {
         let isValid = true;
         var patente = $('#patente').val().trim().toUpperCase();
-        const format1 = /^[A-Z]{3}\s\d{3}$/; // Formato ABC 123
-        const format2 = /^[A-Z]{2}\s\d{3}\s[A-Z]{2}$/; // Formato AB 123 CD
-        if (format1.test(patente) || format2.test(patente)) {
+        
+        if (regexPatente.test(patente)) {
             $('#patente').removeClass('is-invalid');
         } else {
             $('#patente').addClass('is-invalid');
             isValid = false;
         }
+
         if (!isValid) {
             event.preventDefault();
         }
@@ -29,13 +39,14 @@ $(document).ready(function() {
     $('#formEj5').on('submit', function(event) {
         let isValid = true;
         var nrodni = $('#nrodni').val().trim();
-        const format = /^\d{8}$/; // Numero de 8 digitos, sin puntos
-        if (format.test(nrodni)) {
+
+        if (regexDni.test(nrodni)) {
             $('#nrodni').removeClass('is-invalid');
         } else {
             $('#nrodni').addClass('is-invalid');
             isValid = false;
         }
+
         if (!isValid) {
             event.preventDefault();
         }
@@ -60,34 +71,28 @@ $(document).ready(function() {
         var numlocal = $('#numlocal').val().trim();
         var domicilio = $('#domicilio').val().trim();
 
-        const formatDni = /^\d{8}$/; // Numero de 8 digitos, sin puntos
-        const formatNombre = /^[A-Za-zÀ-ÿ\s'-]{2,50}$/; // Cadenas de 2 a 50 caracteres
-        const formatFecha = /^\d{4}-\d{2}-\d{2}$/; // Fecha en formato AAAA-MM-DD
-        const formatTelefono = /^(?:\d{2}-\d{8}|\d{3}-\d{7}|\d{4}-\d{6})$/; // Numeros de 10 digitos, separados por '-' al 2, 3 o 4 digito
-        const formatDomicilio = /^[\d\s\w\.,-]{5,200}$/; 
-
-        if (formatDni.test(nrodni)) {
+        if (regexDni.test(nrodni)) {
             $('#nrodni').removeClass('is-invalid');
         } else {
             $('#nrodni').addClass('is-invalid');
             isValid = false;
         }
 
-        if (formatNombre.test(apellido)) {
+        if (regexNombre.test(apellido)) {
             $('#apellido').removeClass('is-invalid');
         } else {
             $('#apellido').addClass('is-invalid');
             isValid = false;
         }
 
-        if (formatNombre.test(nombre)) {
+        if (regexNombre.test(nombre)) {
             $('#nombre').removeClass('is-invalid');
         } else {
             $('#nombre').addClass('is-invalid');
             isValid = false;
         }
 
-        if (formatFecha.test(fechanac)) { // Cumple formato AAAA-MM-DD
+        if (regexFechaNac.test(fechanac)) { // Cumple formato AAAA-MM-DD
             //Especifico T00:00:00 para evitar errores por zona horaria del sistema
             const dateNacimiento = new Date(fechanac+'T00:00:00'); 
             const datePiso = new Date('1900-01-01T00:00:00');
@@ -114,7 +119,7 @@ $(document).ready(function() {
             isValid = false;
         }
 
-        if (formatTelefono.test(codarea+'-'+numlocal)) {
+        if (regexTelefono.test(codarea+'-'+numlocal)) {
             $('#codarea').removeClass('is-invalid');
             $('#numlocal').removeClass('is-invalid');
         } else {
@@ -123,7 +128,7 @@ $(document).ready(function() {
             isValid = false;
         }
 
-        if (formatDomicilio.test(domicilio)) {
+        if (regexDomicilio.test(domicilio)) {
             $('#domicilio').removeClass('is-invalid');
         } else {
             $('#domicilio').addClass('is-invalid');
@@ -152,26 +157,21 @@ $(document).ready(function() {
         var modelo = $('#modelo').val().trim();
         var dniduenio = $('#dniduenio').val().trim();
 
-        const formatPatente = /^[A-Z]{3}\s\d{3}$|^[A-Z]{2}\s\d{3}\s[A-Z]{2}$/; // Formato ABC 123, AB 123 CD
-        const formatNombre = /^[A-Za-zÀ-ÿ\s'-]{2,50}$/; // Cadenas de 2 a 50 caracteres
-        const formatModelo = /^\d{2}$|^\d{4}$/; //Numero de 2 o 4 digitos
-        const formatDni = /^\d{8}$/; // Numero de 8 digitos, sin puntos
-
-        if (formatPatente.test(patente)) {
+        if (regexPatente.test(patente)) {
             $('#patente').removeClass('is-invalid');
         } else {
             $('#patente').addClass('is-invalid');
             isValid = false;
         }
 
-        if (formatNombre.test(marca)) {
+        if (regexNombre.test(marca)) {
             $('#marca').removeClass('is-invalid');
         } else {
             $('#marca').addClass('is-invalid');
             isValid = false;
         }
 
-        if (formatModelo.test(modelo)) {
+        if (regexModelo.test(modelo)) {
             if (modelo <= ((new Date()).getFullYear() + 2)) {
                 $('#modelo').removeClass('is-invalid');
             } else {
@@ -183,7 +183,7 @@ $(document).ready(function() {
             isValid = false;
         }
 
-        if (formatDni.test(dniduenio)) {
+        if (regexDni.test(dniduenio)) {
             $('#dniduenio').removeClass('is-invalid');
         } else {
             $('#dniduenio').addClass('is-invalid');
@@ -196,6 +196,40 @@ $(document).ready(function() {
     });
 
     $('#patente, #marca, #modelo, #dniduenio').on('input change', function() { //Si cambia el valor
+        $(this).removeClass('is-invalid');
+    });
+});
+
+/**
+ * Formulario de cambioDuenio en EJ8
+ */
+$(document).ready(function() {
+    $('#formEj8').on('submit', function(event) {
+        let isValid = true;
+
+        var patente = $('#patente').val().trim().toUpperCase();
+        var dniduenio = $('#dniduenio').val().trim();
+
+        if (regexPatente.test(patente)) {
+            $('#patente').removeClass('is-invalid');
+        } else {
+            $('#patente').addClass('is-invalid');
+            isValid = false;
+        }
+
+        if (regexDni.test(dniduenio)) {
+            $('#dniduenio').removeClass('is-invalid');
+        } else {
+            $('#dniduenio').addClass('is-invalid');
+            isValid = false;
+        }
+
+        if (!isValid) {
+            event.preventDefault();    
+        }
+    });
+
+    $('#patente, #dniduenio').on('input change', function() { //Si cambia el valor
         $(this).removeClass('is-invalid');
     });
 });
