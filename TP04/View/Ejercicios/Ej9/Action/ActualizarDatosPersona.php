@@ -2,7 +2,6 @@
 include_once '../../../../configuracion.php';
 include_once ROOT_PATH.'/Util/funciones.php';
 include_once ROOT_PATH.'/Controller/ABMPersona.php';
-include_once ROOT_PATH.'/Controller/ABMAuto.php';
 
 $data = data_submitted();
 
@@ -11,17 +10,41 @@ $resultado = "<div class='alert alert-warning border-steam-inactivo'>
             </div>";
 
 if (!empty($data)) {
- 
+    $arrPersona = (new ABMPersona())->buscar(['NroDni'=>(trim($data['nrodni']))]);
+    if (!empty($arrPersona)) {
+        $personaModificada = [
+            'NroDni'=> ($arrPersona[0]->getNroDni()),
+            'Apellido'=> (trim($data['apellido'])),
+            'Nombre'=> (trim($data['nombre'])),
+            'fechaNac'=> (trim($data['fechanac'])),
+            'Telefono'=> (trim($data['codarea'].'-'.$data['numlocal'])),
+            'Domicilio'=> (trim($data['domicilio']))
+        ];
+        if ((new ABMPersona())->modificacion($personaModificada)) {
+            $resultado = "<div class='alert alert-success border-steam-inactivo'>
+            <h5> Persona con DNI '".trim($data['nrodni'])."' modificada con exito.</h5>
+            </div>";
+        } else {
+            $resultado = "<div class='alert alert-warning border-steam-inactivo'>
+            <h5> Cambios no realizados, algún dato no válido en la BD.</h5>
+            </div>";
+        }
+    } else {
+        $resultado = "<div class='alert alert-warning border-steam-inactivo'>
+            <h5> Persona con DNI '".trim($data['nrodni'])."' no se encuentra registrada.</h5>
+            </div>";
+    }
 }
-
 ?>
 
 <?php include_once STRUCTURE_PATH.'/Head.php';?>
- <h1>EN ACTION ACTUALIZAR PERSONA</h1>
     <div class="container mt-5">
         <?php echo $resultado;?>
         <div>
-            <a href="../BuscarPersona.php" class="btn btn-secondary btn-steam2"> Volver </a>
+            <form action='accionBuscarPersona.php'>
+            <input class='d-none' type='text' name='nrodni' id='nrodni' value='<?php echo trim($data['nrodni'])?>' readonly> 
+            <button class="btn btn-secondary btn-steam2" type='submit'> Volver </button>
+            </form>
         </div>
     </div>
 

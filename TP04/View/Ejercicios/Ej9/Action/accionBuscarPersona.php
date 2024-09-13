@@ -16,7 +16,7 @@ $resultado = "
             </div>
             </div>";
 if (!empty($data)) {
-        $arrPersona = (new ABMPersona())->buscar(['NroDni'=>($data['nrodni'])]);
+        $arrPersona = (new ABMPersona())->buscar(['NroDni'=>(trim($data['nrodni']))]);
         if (!empty($arrPersona)) {
             $nrodni = $arrPersona[0]->getNroDni();
             $apellido = $arrPersona[0]->getApellido();
@@ -31,10 +31,10 @@ if (!empty($data)) {
                 <div class='modal-dialog m-auto'>
                     <div class='modal-content rounded-4 shadow contenedor-inactivo-steam w-auto'>
                         <div class='modal-header p-5 pb-4 border-bottom-0'>
-                            <h1 class='mb-0'>Persona encontrada</h1>
+                            <h1 class='mb-0'>Datos personales</h1>
                         </div>
                         <div class='modal-body p-4 pt-0'>
-                            <form id='formEj9_2' action='Action/ActualizarDatosPersona.php' method='POST'>
+                            <form id='formEj9_2' action='ActualizarDatosPersona.php' method='POST'>
             
                                 <div class='form-floating mx-1 mb-2'>
                                     <input type='text' class='form-control form-control-sm rounded-3' name='nrodni' id='nrodni' minlength='8' maxlength='8' placeholder='' value='".$nrodni."' readonly required>
@@ -95,17 +95,19 @@ if (!empty($data)) {
 
                                 <div class='d-flex my-4 justify-content-center'>
                                     <div class='form-floating mx-3 text-center'>
-                                        <button class=' btn rounded-3 btn-primary btn-steam4' type='submit' disabled>Enviar</button>
+                                        <button class='btn rounded-3 btn-primary btn-steam4' id='submitButtonEj9' type='submit' disabled>Enviar</button>
                                     </div>
                                     <div class='form-floating mx-3 text-center'>
-                                        <button class=' btn rounded-3 btn-primary btn-steam2' id='editButton' type='button'>Editar Datos</button>
+                                        <button class='btn rounded-3 btn-group btn-steam2' id='editButtonEj9' type='button'>Editar</button>
                                     </div>
                                     <div class='form-floating mx-3 text-center'>
-                                        <button class='btn rounded-3 btn-secondary btn-steam3' id='cancelButton' type='button' disabled>Cancelar</button>
+                                        <button class='btn rounded-3 btn-secondary btn-steam3' id='cancelButtonEj9' type='button' disabled>Cancelar</button>
                                     </div>
                                 </div>
-                                
-                            </form>       
+                                <div class='text-warning text-center d-none' id='noChangeDiv'>
+                                    <p>No se han modificado datos.</p>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -117,7 +119,7 @@ if (!empty($data)) {
             $resultado = "
                 <div class='container mt-5'>
                     <div class='alert alert-warning border-steam-inactivo'>
-                        <h5> Persona con DNI '".($data['nrodni'])."' no se encuentra registrada.</h5>
+                        <h5> Persona con DNI '".trim($data['nrodni'])."' no se encuentra registrada.</h5>
                     </div>
                     <div class='mt-3'>
                         <a href='../BuscarPersona.php' class='btn btn-secondary btn-steam2'> Volver </a>
