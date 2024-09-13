@@ -184,7 +184,7 @@ Class Auto {
             $consulta = "UPDATE Auto
             SET Marca = '".$this->getMarca()."', Modelo = '".$this->getModelo()."', 
                 DniDuenio = '".($this->getDuenio())->getNroDni()."'
-            WHERE Patente = ".$this->getPatente();
+            WHERE Patente = '".$this->getPatente()."'";
             if ($bD->Ejecutar($consulta)) {
                 $resultado =  true;
             } else {
@@ -204,7 +204,7 @@ Class Auto {
         $bD = new BaseDatos();
         $resultado = false;
         if ($bD->Iniciar()) {
-            $consulta = "DELETE FROM Auto WHERE Patente = ".$this->getPatente();
+            $consulta = "DELETE FROM Auto WHERE Patente = '".$this->getPatente()."'";
             if ($bD->Ejecutar($consulta)) {
                 $resultado =  true;
             } else {

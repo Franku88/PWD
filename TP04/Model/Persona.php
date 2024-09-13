@@ -214,7 +214,7 @@ Class Persona {
             SET Apellido = '".$this->getApellido()."', Nombre = '".$this->getNombre()."', 
                 fechaNac = '".$this->getFechaNac()."', Telefono = '".$this->getTelefono()."', 
                 Domicilio = '".$this->getDomicilio()."'
-            WHERE NroDni = ".$this->getNroDni();
+            WHERE NroDni = '".$this->getNroDni()."'";
             if ($bD->Ejecutar($consulta)) {
                 $resultado =  true;
             } else {
@@ -234,7 +234,7 @@ Class Persona {
         $bD = new BaseDatos();
         $resultado = false;
         if ($bD->Iniciar()) {
-            $consulta = "DELETE FROM Persona WHERE NroDni = ".$this->getNroDni();
+            $consulta = "DELETE FROM Persona WHERE NroDni = '".$this->getNroDni()."'";
             if ($bD->Ejecutar($consulta)) {
                 $resultado =  true;
             } else {
