@@ -3,6 +3,12 @@ label { /*Necesario pues se visualizan dentro del input (sin bootstrap se muestr
     color: black;
 }
 
+input[readonly] {
+    background-color: #e9ecef;
+    cursor: not-allowed; 
+    border: 1px solid #ced4da;
+  }
+
 *::-webkit-scrollbar {
     width: 0.6em;
     height: 0.6em;
