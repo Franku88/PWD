@@ -12,36 +12,36 @@ include_once '../../../configuracion.php';
         antes generada, no se puede acceder directamente a las clases del ORM.</p>
     </div>
     <div class="modal-dialog m-auto">
-    <div class="modal-content rounded-4 shadow contenedor-inactivo-steam w-auto">
-        <div class="modal-header p-5 pb-4 border-bottom-0">
-            <h1 class="mb-0">Cambiar Dueño</h1>
-        </div>
-        <div class="modal-body p-4 pt-0">
-            <form id="formEj8" action="Action/accionCambioDuenio.php" method="POST">
+        <div class="modal-content rounded-4 shadow contenedor-inactivo-steam w-auto">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+                <h1 class="mb-0">Cambiar Dueño</h1>
+            </div>
+            <div class="modal-body p-4 pt-0">
+                <form id="formEj8" action="Action/accionCambioDuenio.php" method="POST">
+                    
+                    <div class="form-floating mx-1 mb-2">
+                        <input type="text" class="form-control form-control-sm rounded-3" name="patente" id="patente" minlength="7" maxlength="9" placeholder="" required>
+                        <label for="patente"> Patente </label>
+                        <div class="invalid-feedback">
+                        Formatos aceptados: 'ABC 123' o 'AB 123 CD'
+                        </div>
+                    </div>
                 
-                <div class="form-floating mx-1 mb-2">
-                    <input type="text" class="form-control form-control-sm rounded-3" name="patente" id="patente" minlength="7" maxlength="9" placeholder="" required>
-                    <label for="patente"> Patente </label>
-                    <div class="invalid-feedback">
-                    Formatos aceptados: 'ABC 123' o 'AB 123 CD'
+                    <div class="form-floating mx-1 mb-2">
+                        <input type="text" class="form-control form-control-sm rounded-3" name="dniduenio" id="dniduenio" minlength="8" maxlength="8" placeholder="" required>
+                        <label for="dniduenio"> DNI de nuevo dueño </label>
+                        <div class="invalid-feedback">
+                        Ocho dígitos, sin puntos.
+                        </div>
                     </div>
-                </div>
-            
-                <div class="form-floating mx-1 mb-2">
-                    <input type="text" class="form-control form-control-sm rounded-3" name="dniduenio" id="dniduenio" minlength="8" maxlength="8" placeholder="" required>
-                    <label for="dniduenio"> DNI de nuevo dueño </label>
-                    <div class="invalid-feedback">
-                    Ocho dígitos, sin puntos.
-                    </div>
-                </div>
 
-                <div class="form-floating mb-2 text-center">
-                    <button class="w-50 mb-2 btn rounded-3 btn-primary btn-steam4" type="submit">Enviar</button>
-                </div>
-                
-            </form>
+                    <div class="form-floating mb-2 text-center">
+                        <button class="w-50 mb-2 btn rounded-3 btn-primary btn-steam4" type="submit">Enviar</button>
+                    </div>
+                    
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
 <?php include_once STRUCTURE_PATH.'/Foot.php';?>
